@@ -1,0 +1,18 @@
+name: feeder
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.2.1
+
+dependencies:
+  aws_s3_api: ^2.0.0
+  dotenv: ^4.2.0
+  rate_limiter: ^1.0.0
+  simple_logger: ^1.9.0+3
+  surrealdb: ^0.6.2
+
+dev_dependencies:
+  lints: ^2.1.0
+  test: ^1.24.0
