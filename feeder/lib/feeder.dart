@@ -41,46 +41,79 @@ void run(DotEnv env) async {
       await surrealClient.query("SELECT * FROM blockchain:height"))["height"];
 
   //get utxo data (block:-2 means unspent, value > 0 filters out unspendable utxos)
-  final res = await surrealClient.query(
-          r"SELECT block.height AS height FROM (SELECT block FROM utxo WHERE spent_on_block = 'block:-2' AND value > 0) FETCH block")
+  final dbRes = await surrealClient.query(
+          r"SELECT block.height AS height, value FROM (SELECT block,value FROM utxo WHERE spent_on_block = 'block:-2' AND value > 0) FETCH block")
       as List<dynamic>;
-  final heights = res[0]["result"];
+  final results = dbRes[0]["result"];
 
   //parse the response into a list of ints
   List<int> heightList = [];
-  for (final height in heights) {
+  List<double> valueList = [];
+  for (final height in results) {
     heightList.add(height['height'] as int);
+    valueList.add(height['value'] as double);
   }
 
-  //sort the list
+  //sort the heightList
   heightList.sort();
 
   //parse utxo data into a map of height to count in 50k chunks
-  Map<int, int> unspentUtxos = {};
+  Map<int, int> numberOfUnspentUtxos = {};
 
   for (int i = 0; i <= currentHeight; i += 50000) {
     heightList.where((element) => element <= i).forEach((element) {
-      unspentUtxos[i] = unspentUtxos[i] == null ? 1 : unspentUtxos[i]! + 1;
+      numberOfUnspentUtxos[i] =
+          numberOfUnspentUtxos[i] == null ? 1 : numberOfUnspentUtxos[i]! + 1;
     });
   }
 
   //also add currentHeight data point
   heightList.where((element) => element <= currentHeight).forEach((element) {
-    unspentUtxos[currentHeight] = unspentUtxos[currentHeight] == null
-        ? 1
-        : unspentUtxos[currentHeight]! + 1;
+    numberOfUnspentUtxos[currentHeight] =
+        numberOfUnspentUtxos[currentHeight] == null
+            ? 1
+            : numberOfUnspentUtxos[currentHeight]! + 1;
   });
 
-  //write aths to aths.json
-  final unspentUtxosList = unspentUtxos.entries
+  //serialize the data for upload
+  final numberOfUnspentUtxosList = numberOfUnspentUtxos.entries
       .map((entry) => {'height': entry.key, 'count': entry.value})
       .toList();
 
-  //read the existing file
+  //parse utxo data into a map of height to count in 50k chunks
+  Map<int, double> commulativeValueOfUtxos = {};
+
+  for (int i = 0; i <= currentHeight; i += 50000) {
+    valueList.where((element) => element <= i).forEach((element) {
+      commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
+          ? element
+          : commulativeValueOfUtxos[i]! + element;
+    });
+  }
+
+  //also add currentHeight data point
+  valueList.where((element) => element <= currentHeight).forEach((element) {
+    commulativeValueOfUtxos[currentHeight] =
+        commulativeValueOfUtxos[currentHeight] == null
+            ? element
+            : commulativeValueOfUtxos[currentHeight]! + element;
+  });
+
+  //serialize the data for upload
+  final commulativeValueOfUtxosList = commulativeValueOfUtxos.entries
+      .map((entry) => {'height': entry.key, 'count': entry.value})
+      .toList();
+
+  //upload the data to S3
   await uploadToS3(
-    data: jsonEncode(unspentUtxosList),
+    data: jsonEncode(numberOfUnspentUtxosList),
     env: env,
-    fileName: 'utxos.json',
+    fileName: 'nOfUtxos.json',
+  );
+  await uploadToS3(
+    data: jsonEncode(commulativeValueOfUtxosList),
+    env: env,
+    fileName: 'valuesOfUtxos.json',
   );
 
   //close db

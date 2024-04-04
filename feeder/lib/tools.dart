@@ -51,7 +51,7 @@ Future<void> uploadToS3({
 
     await service.putObject(
       bucket: env['S3_BUCKET_NAME']!,
-      key: env['S3_FILE_NAME']!,
+      key: fileName,
       body: newFileContent,
       contentType: 'application/json',
     );

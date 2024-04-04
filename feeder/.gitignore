@@ -3,5 +3,6 @@
 .dart_tool/
 db
 .env
-aths.json
+valuesOfUtxos.json
+nOfUtxos.json
 docker-compose.override.yml
