@@ -31,7 +31,7 @@ void main() {
   HttpServer.bind(InternetAddress.anyIPv4, int.parse(env["PING_PORT"]!))
       .then((server) {
     server.listen((HttpRequest request) {
-      feeder.run(env);
+      debouncedFunction();
       request.response
         ..statusCode = HttpStatus.ok
         ..write('Server received request')

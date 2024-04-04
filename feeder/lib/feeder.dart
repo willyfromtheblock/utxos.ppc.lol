@@ -39,6 +39,7 @@ void run(DotEnv env) async {
   //get current height
   final currentHeight = parseQueryResults(
       await surrealClient.query("SELECT * FROM blockchain:height"))["height"];
+  logger.info(currentHeight);
 
   //get utxo data (block:-2 means unspent, value > 0 filters out unspendable utxos)
   final dbRes = await surrealClient.query(
@@ -48,10 +49,13 @@ void run(DotEnv env) async {
 
   //parse the response into a list of ints
   List<int> heightList = [];
-  List<double> valueList = [];
+  List<({int height, double value})> valueList = [];
   for (final height in results) {
     heightList.add(height['height'] as int);
-    valueList.add(height['value'] as double);
+    valueList.add((
+      height: height['height'] as int,
+      value: height['value'] as double,
+    ));
   }
 
   //sort the heightList
@@ -84,19 +88,21 @@ void run(DotEnv env) async {
   Map<int, double> commulativeValueOfUtxos = {};
 
   for (int i = 0; i <= currentHeight; i += 50000) {
-    valueList.where((element) => element <= i).forEach((element) {
+    valueList.where((element) => element.height <= i).forEach((element) {
       commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
-          ? element
-          : commulativeValueOfUtxos[i]! + element;
+          ? element.value
+          : commulativeValueOfUtxos[i]! + element.value;
     });
   }
 
   //also add currentHeight data point
-  valueList.where((element) => element <= currentHeight).forEach((element) {
+  valueList
+      .where((element) => element.height <= currentHeight)
+      .forEach((element) {
     commulativeValueOfUtxos[currentHeight] =
         commulativeValueOfUtxos[currentHeight] == null
-            ? element
-            : commulativeValueOfUtxos[currentHeight]! + element;
+            ? element.value
+            : commulativeValueOfUtxos[currentHeight]! + element.value;
   });
 
   //serialize the data for upload
