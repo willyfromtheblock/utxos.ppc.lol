@@ -14,7 +14,7 @@ void run(DotEnv env) async {
     '${env["SURREAL_HOST"]}:${env["SURREAL_PORT"]}/rpc',
     options: SurrealDBOptions(
       timeoutDuration: Duration(
-        minutes: 1,
+        minutes: 2,
       ),
     ),
   );
