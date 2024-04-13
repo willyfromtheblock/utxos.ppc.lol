@@ -86,12 +86,14 @@ void run(DotEnv env) async {
 
   //parse utxo data into a map of height to count in 50k chunks
   Map<int, double> commulativeValueOfUtxos = {};
+  Map<int, double> heightsliceValueOfUtxos = {};
 
   for (int i = 0; i <= currentHeight; i += 50000) {
     valueList.where((element) => element.height <= i).forEach((element) {
       commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
           ? element.value
           : commulativeValueOfUtxos[i]! + element.value;
+      heightsliceValueOfUtxos[i] = element.value;
     });
   }
 
