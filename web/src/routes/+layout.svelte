@@ -1,5 +1,5 @@
 <script type="ts">
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n/translations';
 </script>
 
 <header>
@@ -12,7 +12,6 @@
 
 <footer>
 	<hr />
-	<p>{$t('home.footer.disclaimer')}</p>
 	<div>
 		<a href="https://ppc.lol/charts" target="_blank" rel="noopener noreferrer"
 			>{$t('home.footer.charts')}

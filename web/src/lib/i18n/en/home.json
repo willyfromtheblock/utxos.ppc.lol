@@ -1,0 +1,12 @@
+{
+	"block": "Block",
+	"noData": "No data",
+	"title": "Peercoin Unspect Transactions (UTXOs)",
+	"value": "Value",
+	"blockHeight": "Block Height",
+	"lastModified": "Last modified: ",
+	"footer": {
+		"charts": "Peercoin Charts",
+		"website": "Peercoin Website"
+	}
+}

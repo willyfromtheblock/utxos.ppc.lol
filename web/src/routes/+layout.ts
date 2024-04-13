@@ -1,4 +1,4 @@
-import { loadTranslations } from '$lib/translations';
+import { loadTranslations } from '$lib/i18n/translations';
 import '@fontsource/roboto';
 
 export const load = async ({ url }) => {
