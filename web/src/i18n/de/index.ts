@@ -1,41 +1,41 @@
 import type { Translation } from '../i18n-types';
 
-const de = {
+const de: Translation = {
 	block: 'Block',
-	noData: 'No data',
-	title: 'Peercoin Unspent Transactions Outputs (UTXOs)',
-	value: 'Value',
-	lastModified: 'Last modified: ',
+	title: 'Peercoin Unverbrauchte Transaktionsausgänge (UTXOs)',
+	noData: 'Keine Daten',
+	value: 'Wert',
+	lastModified: 'Zuletzt geändert: ',
 	charts: {
 		common: {
-			blockHeight: 'Block Height'
+			blockHeight: 'Blockhöhe'
 		},
 		nOfUtxos: {
-			title: 'Number of UTXOs',
-			yAxis: 'Number of UTXOs',
+			title: 'Anzahl der UTXOs',
+			yAxis: 'Anzahl der UTXOs',
 			description:
-				'The number of UTXOs grouped by block height. You may read this as y UTXOs have been created before x block height.',
+				'Die Anzahl der UTXOs gruppiert nach Blockhöhe. Sie können dies so lesen, dass y UTXOs vor der Blockhöhe x erstellt wurden.',
 			value: 'n'
 		},
 		valuesOfUtxos: {
-			title: 'Cummulative value of UTXOs',
-			yAxis: 'Cummulative value of UTXOs',
+			title: 'Kumulativer Wert der UTXOs',
+			yAxis: 'Kumulativer Wert der UTXOs',
 			description:
-				'The cummulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.',
-			value: 'Value'
+				'Der kumulative Wert der UTXOs gruppiert nach Blockhöhe. Sie können dies so lesen, dass y PPC seit der Blockhöhe x unverbraucht sind.',
+			value: 'Wert'
 		},
 		diffValueOfUtxos: {
-			title: 'Diff Value of UTXOs',
-			yAxis: 'Value of UTXOs',
+			title: 'Diff-Wert der UTXOs',
+			yAxis: 'Wert der UTXOs',
 			description:
-				'The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC have been created between x block height time slices.',
-			value: 'Value'
+				'Der Unterschied des UTXO-Wertes gruppiert nach Blockhöhe im Vergleich zur vorherigen Scheibe. Sie können dies so lesen, dass y PPC zwischen den Zeitscheiben der Blockhöhe x erstellt wurden.',
+			value: 'Wert'
 		}
 	},
 	footer: {
-		charts: 'Peercoin Charts',
-		website: 'Peercoin Website'
+		charts: 'Peercoin Diagramme',
+		website: 'Peercoin Webseite'
 	}
-} satisfies Translation;
+};
 
 export default de;
