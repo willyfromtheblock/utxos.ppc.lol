@@ -28,7 +28,7 @@ const en = {
 			title: 'Diff Value of UTXOs',
 			yAxis: 'Value of UTXOs',
 			description:
-				'The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC have been created between x block height time slices.',
+				'The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC were last involved in a transaction between x block height time slices.',
 			value: 'Value'
 		}
 	},
