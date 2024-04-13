@@ -2,6 +2,8 @@
 	import { setLocale } from '$i18n/i18n-svelte';
 	import type { LayoutData } from './$types';
 	import LL from '$i18n/i18n-svelte';
+	import LocaleSwitcher from '$lib/components/LocaleSwitcher.svelte';
+	import HeadHrefLangs from '$lib/components/HeadHrefLangs.svelte';
 
 	export let data: LayoutData;
 	// at the very top, set the locale before you access the store and before the actual rendering takes place
@@ -11,6 +13,7 @@
 <header>
 	<img src="/peercoin.svg" alt="Logo" height="150px" />
 	<h2>{$LL.title()}</h2>
+	<LocaleSwitcher />
 </header>
 <main>
 	<slot />
@@ -28,6 +31,10 @@
 		<span class="donations">Donations: PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9</span>
 	</div>
 </footer>
+
+<svelte:head>
+	<HeadHrefLangs />
+</svelte:head>
 
 <style>
 	:global(body) {
