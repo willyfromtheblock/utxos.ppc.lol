@@ -13,6 +13,9 @@
 		yAxisTitle={$t('home.charts.nOfUtxos.yAxis')}
 		valueName={$t('home.charts.nOfUtxos.value')}
 	/>
+	<p>
+		{$t('home.charts.nOfUtxos.description')}
+	</p>
 	<hr />
 	<Chart
 		chartTitle={$t('home.charts.valuesOfUtxos.title')}
@@ -22,6 +25,9 @@
 		yAxisTitle={$t('home.charts.valuesOfUtxos.yAxis')}
 		valueName={$t('home.charts.valuesOfUtxos.value')}
 	/>
+	<p>
+		{$t('home.charts.valuesOfUtxos.description')}
+	</p>
 </div>
 <div class="last-modified">
 	{$t('home.lastModified')}{data.lastModified}
@@ -30,7 +36,7 @@
 <style>
 	.last-modified {
 		color: var(--peercoin-green);
-		margin-top: 1.5rem;
+		margin-top: 2rem;
 	}
 	.container {
 		display: flex;
@@ -42,5 +48,8 @@
 		color: var(--peercoin-white);
 		width: 33%;
 		margin: 0 auto;
+	}
+	.container > p {
+		color: black;
 	}
 </style>
