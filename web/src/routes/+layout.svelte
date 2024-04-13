@@ -85,7 +85,7 @@
 		margin-bottom: 2rem;
 		gap: 1rem;
 		@media (min-width: 768px) {
-			justify-content: unset;
+			justify-content: space-evenly;
 			gap: 3rem;
 		}
 	}

@@ -46,12 +46,25 @@
 
 <svelte:window on:popstate={handlePopStateEvent} />
 
-<ul>
+<div class="locale-switcher">
 	{#each locales as l}
-		<li>
-			<a class:active={l === $locale} href={replaceLocaleInUrl($page.url, l)}>
-				{l}
-			</a>
-		</li>
+		<a class:active={l === $locale} href={replaceLocaleInUrl($page.url, l)}>
+			{l}
+		</a>
 	{/each}
-</ul>
+</div>
+
+<style>
+	.locale-switcher {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.locale-switcher a {
+		color: var(--peercoin-green);
+		text-decoration: none;
+	}
+	.locale-switcher a.active {
+		font-weight: bold;
+	}
+</style>
