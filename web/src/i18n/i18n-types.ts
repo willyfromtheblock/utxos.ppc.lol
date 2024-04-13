@@ -43,7 +43,7 @@ type RootTranslation = {
 		}
 		nOfUtxos: {
 			/**
-			 * N​u​m​b​e​r​ ​o​f​ ​U​T​X​O​s
+			 * A​g​e​ ​o​f​ ​U​T​X​O​s
 			 */
 			title: string
 			/**
@@ -70,6 +70,24 @@ type RootTranslation = {
 			yAxis: string
 			/**
 			 * T​h​e​ ​c​u​m​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.
+			 */
+			description: string
+			/**
+			 * V​a​l​u​e
+			 */
+			value: string
+		}
+		diffValueOfUtxos: {
+			/**
+			 * D​i​f​f​ ​V​a​l​u​e​ ​o​f​ ​U​T​X​O​s
+			 */
+			title: string
+			/**
+			 * V​a​l​u​e​ ​o​f​ ​U​T​X​O​s
+			 */
+			yAxis: string
+			/**
+			 * T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​o​f​ ​U​T​X​O​ ​v​a​l​u​e​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​c​o​m​p​a​r​e​d​ ​t​o​ ​t​h​e​ ​p​r​e​v​i​o​u​s​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​h​a​v​e​ ​b​e​e​n​ ​c​r​e​a​t​e​d​ ​b​e​t​w​e​e​n​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​t​i​m​e​ ​s​l​i​c​e​s​.
 			 */
 			description: string
 			/**
@@ -120,7 +138,7 @@ export type TranslationFunctions = {
 		}
 		nOfUtxos: {
 			/**
-			 * Number of UTXOs
+			 * Age of UTXOs
 			 */
 			title: () => LocalizedString
 			/**
@@ -147,6 +165,24 @@ export type TranslationFunctions = {
 			yAxis: () => LocalizedString
 			/**
 			 * The cummulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Value
+			 */
+			value: () => LocalizedString
+		}
+		diffValueOfUtxos: {
+			/**
+			 * Diff Value of UTXOs
+			 */
+			title: () => LocalizedString
+			/**
+			 * Value of UTXOs
+			 */
+			yAxis: () => LocalizedString
+			/**
+			 * The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC have been created between x block height time slices.
 			 */
 			description: () => LocalizedString
 			/**
