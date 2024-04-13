@@ -13,6 +13,7 @@
 		yAxisTitle={$t('home.charts.nOfUtxos.yAxis')}
 		valueName={$t('home.charts.nOfUtxos.value')}
 	/>
+	<hr />
 	<Chart
 		chartTitle={$t('home.charts.valuesOfUtxos.title')}
 		chartId="valuesOfUtxos"
@@ -32,11 +33,14 @@
 		margin-top: 1.5rem;
 	}
 	.container {
-		display: grid;
-		grid-gap: 20px;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		@media (min-width: 1024px) {
-			grid-template-columns: repeat(3, 1fr);
-		}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+	}
+	.container > hr {
+		color: var(--peercoin-white);
+		width: 33%;
+		margin: 0 auto;
 	}
 </style>

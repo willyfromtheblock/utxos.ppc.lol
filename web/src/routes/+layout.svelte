@@ -25,7 +25,7 @@
 
 <style>
 	:global(body) {
-		font-family: 'Roboto';
+		font-family: 'Roboto', sans-serif;
 		background: var(--peercoin-white);
 		color: white;
 		padding: 0.5rem;

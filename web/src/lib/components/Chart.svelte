@@ -72,3 +72,17 @@
 </script>
 
 <div id={chartId} class="chart-container" />
+
+<style>
+	.chart-container {
+		border-radius: 1rem;
+		@media (min-width: 768px) {
+			width: 70vw;
+		}
+		@media (min-width: 1440px) {
+			width: 50vw;
+		}
+		min-height: 400px;
+		width: 90vw;
+	}
+</style>
