@@ -43,7 +43,7 @@ type RootTranslation = {
 		}
 		nOfUtxos: {
 			/**
-			 * A​g​e​ ​o​f​ ​U​T​X​O​s
+			 * C​u​m​u​l​a​t​i​v​e​ ​N​u​m​b​e​r​ ​U​T​X​O​s
 			 */
 			title: string
 			/**
@@ -61,15 +61,15 @@ type RootTranslation = {
 		}
 		valuesOfUtxos: {
 			/**
-			 * C​u​m​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s
+			 * C​u​m​u​l​a​t​i​v​e​ ​V​a​l​u​e​ ​o​f​ ​U​T​X​O​s
 			 */
 			title: string
 			/**
-			 * C​u​m​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s
+			 * V​a​l​u​e​ ​o​f​ ​U​T​X​O​s
 			 */
 			yAxis: string
 			/**
-			 * T​h​e​ ​c​u​m​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.
+			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​.
 			 */
 			description: string
 			/**
@@ -79,7 +79,7 @@ type RootTranslation = {
 		}
 		diffValueOfUtxos: {
 			/**
-			 * D​i​f​f​ ​V​a​l​u​e​ ​o​f​ ​U​T​X​O​s
+			 * A​g​e​ ​o​f​ ​C​o​i​n​s
 			 */
 			title: string
 			/**
@@ -87,7 +87,7 @@ type RootTranslation = {
 			 */
 			yAxis: string
 			/**
-			 * T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​o​f​ ​U​T​X​O​ ​v​a​l​u​e​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​c​o​m​p​a​r​e​d​ ​t​o​ ​t​h​e​ ​p​r​e​v​i​o​u​s​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​h​a​v​e​ ​b​e​e​n​ ​c​r​e​a​t​e​d​ ​b​e​t​w​e​e​n​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​t​i​m​e​ ​s​l​i​c​e​s​.
+			 * T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​o​f​ ​U​T​X​O​ ​v​a​l​u​e​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​c​o​m​p​a​r​e​d​ ​t​o​ ​t​h​e​ ​p​r​e​v​i​o​u​s​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​w​e​r​e​ ​l​a​s​t​ ​i​n​v​o​l​v​e​d​ ​i​n​ ​a​ ​t​r​a​n​s​a​c​t​i​o​n​ ​b​e​t​w​e​e​n​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​t​i​m​e​ ​s​l​i​c​e​s​.
 			 */
 			description: string
 			/**
@@ -138,7 +138,7 @@ export type TranslationFunctions = {
 		}
 		nOfUtxos: {
 			/**
-			 * Age of UTXOs
+			 * Cumulative Number UTXOs
 			 */
 			title: () => LocalizedString
 			/**
@@ -156,15 +156,15 @@ export type TranslationFunctions = {
 		}
 		valuesOfUtxos: {
 			/**
-			 * Cummulative value of UTXOs
+			 * Cumulative Value of UTXOs
 			 */
 			title: () => LocalizedString
 			/**
-			 * Cummulative value of UTXOs
+			 * Value of UTXOs
 			 */
 			yAxis: () => LocalizedString
 			/**
-			 * The cummulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.
+			 * The cumulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.
 			 */
 			description: () => LocalizedString
 			/**
@@ -174,7 +174,7 @@ export type TranslationFunctions = {
 		}
 		diffValueOfUtxos: {
 			/**
-			 * Diff Value of UTXOs
+			 * Age of Coins
 			 */
 			title: () => LocalizedString
 			/**
@@ -182,7 +182,7 @@ export type TranslationFunctions = {
 			 */
 			yAxis: () => LocalizedString
 			/**
-			 * The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC have been created between x block height time slices.
+			 * The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC were last involved in a transaction between x block height time slices.
 			 */
 			description: () => LocalizedString
 			/**

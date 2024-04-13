@@ -11,7 +11,7 @@ const de: Translation = {
 			blockHeight: 'Blockhöhe'
 		},
 		nOfUtxos: {
-			title: 'Anzahl der UTXOs',
+			title: 'Kumulative Anzahl UTXOs',
 			yAxis: 'Anzahl der UTXOs',
 			description:
 				'Die Anzahl der UTXOs gruppiert nach Blockhöhe. Sie können dies so lesen, dass y UTXOs vor der Blockhöhe x erstellt wurden.',
@@ -19,16 +19,16 @@ const de: Translation = {
 		},
 		valuesOfUtxos: {
 			title: 'Kumulativer Wert der UTXOs',
-			yAxis: 'Kumulativer Wert der UTXOs',
+			yAxis: 'Wert der UTXOs',
 			description:
 				'Der kumulative Wert der UTXOs gruppiert nach Blockhöhe. Sie können dies so lesen, dass y PPC seit der Blockhöhe x unverbraucht sind.',
 			value: 'Wert'
 		},
 		diffValueOfUtxos: {
-			title: 'Diff-Wert der UTXOs',
+			title: 'Alter der Münzen',
 			yAxis: 'Wert der UTXOs',
 			description:
-				'Der Unterschied des UTXO-Wertes gruppiert nach Blockhöhe im Vergleich zur vorherigen Scheibe. Sie können dies so lesen, dass y PPC zwischen den Zeitscheiben der Blockhöhe x erstellt wurden.',
+				'Der Unterschied des UTXO-Wertes gruppiert nach Blockhöhe im Vergleich zur vorherigen Scheibe. Sie können dies so lesen, dass y PPC zuletzt in einer Transaktion zwischen den Zeitscheiben der Blockhöhe x beteiligt waren.',
 			value: 'Wert'
 		}
 	},
