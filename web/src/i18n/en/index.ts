@@ -11,17 +11,17 @@ const en = {
 			blockHeight: 'Block Height'
 		},
 		nOfUtxos: {
-			title: 'Age of UTXOs',
+			title: 'Cumulative Number UTXOs',
 			yAxis: 'Number of UTXOs',
 			description:
 				'The number of UTXOs grouped by block height. You may read this as y UTXOs have been created before x block height.',
 			value: 'n'
 		},
 		valuesOfUtxos: {
-			title: 'Cummulative value of UTXOs',
-			yAxis: 'Cummulative value of UTXOs',
+			title: 'Cumulative Value of UTXOs',
+			yAxis: 'Value of UTXOs',
 			description:
-				'The cummulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.',
+				'The cumulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.',
 			value: 'Value'
 		},
 		diffValueOfUtxos: {
