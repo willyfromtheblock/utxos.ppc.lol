@@ -105,12 +105,29 @@ void run(DotEnv env) async {
             : commulativeValueOfUtxos[currentHeight]! + element.value;
   });
 
-  //serialize the data for upload
+  Map<int, double> diffValueOfUtxos = {};
+  int? prevKey;
+  for (final slice in commulativeValueOfUtxos.entries) {
+    if (prevKey != null) {
+      diffValueOfUtxos[slice.key] =
+          slice.value - commulativeValueOfUtxos[prevKey]!;
+    } else {
+      diffValueOfUtxos[slice.key] = slice.value;
+    }
+    prevKey = slice.key;
+  }
+
+  //serialize commulativeValueOfUtxosList for upload
   final commulativeValueOfUtxosList = commulativeValueOfUtxos.entries
       .map((entry) => {'height': entry.key, 'count': entry.value})
       .toList();
 
-  //upload the data to S3
+  //serialize diffValueOfUtxos for upload
+  final diffValueOfUtxosList = diffValueOfUtxos.entries
+      .map((entry) => {'height': entry.key, 'count': entry.value})
+      .toList();
+
+  //upload all the data to S3
   await uploadToS3(
     data: jsonEncode(numberOfUnspentUtxosList),
     env: env,
@@ -120,6 +137,11 @@ void run(DotEnv env) async {
     data: jsonEncode(commulativeValueOfUtxosList),
     env: env,
     fileName: 'valuesOfUtxos.json',
+  );
+  await uploadToS3(
+    data: jsonEncode(diffValueOfUtxosList),
+    env: env,
+    fileName: 'diffValueOfUtxos.json',
   );
 
   //close db
