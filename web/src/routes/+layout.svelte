@@ -51,6 +51,7 @@
 	:global(:root) {
 		--peercoin-green: rgb(60, 176, 84);
 		--peercoin-white: var(--peercoin-white);
+		--peercoin-accent: #dff0d8;
 	}
 	.donations {
 		font-size: 1rem;
@@ -61,6 +62,9 @@
 
 	header {
 		color: var(--peercoin-green);
+		background-color: var(--peercoin-accent);
+		padding: 1rem;
+		border-radius: 1rem;
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
