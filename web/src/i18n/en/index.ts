@@ -1,8 +1,34 @@
-import type { BaseTranslation } from '../i18n-types'
+import type { BaseTranslation } from '../i18n-types';
 
 const en = {
-	// TODO: your translations go here
-	HI: 'Hi {name:string}! Please leave a star if you like this project: https://github.com/ivanhofer/typesafe-i18n',
-} satisfies BaseTranslation
+	block: 'Block',
+	noData: 'No data',
+	title: 'Peercoin Unspent Transactions Outputs (UTXOs)',
+	value: 'Value',
+	lastModified: 'Last modified: ',
+	charts: {
+		common: {
+			blockHeight: 'Block Height'
+		},
+		nOfUtxos: {
+			title: 'Number of UTXOs',
+			yAxis: 'Number of UTXOs',
+			description:
+				'The number of UTXOs grouped by block height. You may read this as y UTXOs have been created before x block height.',
+			value: 'n'
+		},
+		valuesOfUtxos: {
+			title: 'Cummulative value of UTXOs',
+			yAxis: 'Cummulative value of UTXOs',
+			description:
+				'The cummulative value of UTXOs grouped by block height. You may read this as y PPC are unspent since x block height.',
+			value: 'Value'
+		}
+	},
+	footer: {
+		charts: 'Peercoin Charts',
+		website: 'Peercoin Website'
+	}
+} satisfies BaseTranslation;
 
-export default en
+export default en;

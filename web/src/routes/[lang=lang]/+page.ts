@@ -1,8 +1,6 @@
 import type { ChartData } from '$lib/types/ChartData.js';
 
-export async function load({
-	fetch
-}): Promise<
+export async function load({ fetch }): Promise<
 	| {
 			nOfUtxos: ChartData[];
 			valuesOfUtxos: ChartData[];

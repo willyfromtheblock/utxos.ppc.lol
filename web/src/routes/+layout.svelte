@@ -1,10 +1,16 @@
-<script type="ts">
-	import { t } from '$lib/i18n/translations';
+<script lang="ts">
+	import { setLocale } from '$i18n/i18n-svelte';
+	import type { LayoutData } from './$types';
+	import LL from '$i18n/i18n-svelte';
+
+	export let data: LayoutData;
+	// at the very top, set the locale before you access the store and before the actual rendering takes place
+	setLocale(data.locale);
 </script>
 
 <header>
 	<img src="/peercoin.svg" alt="Logo" height="150px" />
-	<h2>{$t('home.title')}</h2>
+	<h2>{$LL.title()}</h2>
 </header>
 <main>
 	<slot />
@@ -14,10 +20,10 @@
 	<hr />
 	<div>
 		<a href="https://ppc.lol/charts" target="_blank" rel="noopener noreferrer"
-			>{$t('home.footer.charts')}
+			>{$LL.footer.charts()}
 		</a>
 		<a href="https://ppc.lol/dotnet" target="_blank" rel="noopener noreferrer"
-			>{$t('home.footer.website')}
+			>{$LL.footer.website()}
 		</a>
 		<span class="donations">Donations: PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9</span>
 	</div>

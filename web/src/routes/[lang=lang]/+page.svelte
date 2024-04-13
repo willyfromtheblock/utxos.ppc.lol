@@ -1,36 +1,36 @@
 <script type="ts">
 	import Chart from '$lib/components/Chart.svelte';
 	export let data;
-	import { t } from '$lib/i18n/translations';
+	import LL from '$i18n/i18n-svelte';
 </script>
 
 <div class="container">
 	<Chart
-		chartTitle={$t('home.charts.nOfUtxos.title')}
+		chartTitle={$LL.charts.nOfUtxos.title()}
 		chartId="nOfUtxos"
 		chartData={data.nOfUtxos}
-		xAxisTitle={$t('home.charts.common.blockHeight')}
-		yAxisTitle={$t('home.charts.nOfUtxos.yAxis')}
-		valueName={$t('home.charts.nOfUtxos.value')}
+		xAxisTitle={$LL.charts.common.blockHeight()}
+		yAxisTitle={$LL.charts.nOfUtxos.yAxis()}
+		valueName={$LL.charts.nOfUtxos.value()}
 	/>
 	<p>
-		{$t('home.charts.nOfUtxos.description')}
+		{$LL.charts.nOfUtxos.description()}
 	</p>
 	<hr />
 	<Chart
-		chartTitle={$t('home.charts.valuesOfUtxos.title')}
+		chartTitle={$LL.charts.valuesOfUtxos.title()}
 		chartId="valuesOfUtxos"
 		chartData={data.valuesOfUtxos}
-		xAxisTitle={$t('home.charts.common.blockHeight')}
-		yAxisTitle={$t('home.charts.valuesOfUtxos.yAxis')}
-		valueName={$t('home.charts.valuesOfUtxos.value')}
+		xAxisTitle={$LL.charts.common.blockHeight()}
+		yAxisTitle={$LL.charts.valuesOfUtxos.yAxis()}
+		valueName={$LL.charts.valuesOfUtxos.value()}
 	/>
 	<p>
-		{$t('home.charts.valuesOfUtxos.description')}
+		{$LL.charts.valuesOfUtxos.description()}
 	</p>
 </div>
 <div class="last-modified">
-	{$t('home.lastModified')}{data.lastModified}
+	{$LL.lastModified}{data.lastModified}
 </div>
 
 <style>
