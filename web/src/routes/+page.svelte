@@ -6,20 +6,20 @@
 
 <div class="container">
 	<Chart
-		chartTitle="Number of UTXOs"
+		chartTitle={$t('home.charts.nOfUtxos.title')}
 		chartId="nOfUtxos"
 		chartData={data.nOfUtxos}
-		xAxisTitle="Block Height"
-		yAxisTitle="Number of UTXOs"
-		valueName="n"
+		xAxisTitle={$t('home.charts.common.blockHeight')}
+		yAxisTitle={$t('home.charts.nOfUtxos.yAxis')}
+		valueName={$t('home.charts.nOfUtxos.value')}
 	/>
 	<Chart
-		chartTitle="Cummulative value of UTXOs"
+		chartTitle={$t('home.charts.valuesOfUtxos.title')}
 		chartId="valuesOfUtxos"
 		chartData={data.valuesOfUtxos}
-		xAxisTitle="Block Height"
-		yAxisTitle="Cummulative value of UTXOs"
-		valueName="Value"
+		xAxisTitle={$t('home.charts.common.blockHeight')}
+		yAxisTitle={$t('home.charts.valuesOfUtxos.yAxis')}
+		valueName={$t('home.charts.valuesOfUtxos.value')}
 	/>
 </div>
 <div class="last-modified">

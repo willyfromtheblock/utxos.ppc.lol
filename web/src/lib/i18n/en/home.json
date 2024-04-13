@@ -1,10 +1,26 @@
 {
 	"block": "Block",
 	"noData": "No data",
-	"title": "Peercoin Unspect Transactions (UTXOs)",
+	"title": "Peercoin Unspent Transactions (UTXOs)",
 	"value": "Value",
-	"blockHeight": "Block Height",
 	"lastModified": "Last modified: ",
+	"charts": {
+		"common": {
+			"blockHeight": "Block Height"
+		},
+		"nOfUtxos": {
+			"title": "Number of UTXOs",
+			"yAxis": "Number of UTXOs",
+			"description": "The number of unspent transaction outputs (UTXOs) on the Peercoin network.",
+			"value": "n"
+		},
+		"valuesOfUtxos": {
+			"title": "Cummulative value of UTXOs",
+			"yAxis": "Cummulative value of UTXOs",
+			"description": "The total value of unspent transaction outputs (UTXOs) on the Peercoin network.",
+			"value": "Value"
+		}
+	},
 	"footer": {
 		"charts": "Peercoin Charts",
 		"website": "Peercoin Website"
