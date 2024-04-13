@@ -42,7 +42,7 @@
 	</p>
 </div>
 <div class="last-modified">
-	{$LL.lastModified}{data.lastModified}
+	{$LL.lastModified()}{data.lastModified}
 </div>
 
 <style>
