@@ -21,30 +21,32 @@ const envList = [
 ];
 
 Future<void> main() async {
+  // Load environment variables
   var env = DotEnv(includePlatformEnvironment: true)..load();
+  if (env.isEveryDefined(envList) == false) {
+    throw Exception('Error: Environment variables not found or incomplete');
+  }
 
+  // Initialize Sentry
   await Sentry.init((options) {
     options.dsn = env["SENTRY_DSN"]!;
     options.tracesSampleRate = 0;
   });
 
-  if (env.isEveryDefined(envList) == false) {
-    throw Exception('Error: Environment variables not found or incomplete');
-  }
   final debouncedFunction = debounce(() {
-    try {
-      feeder.run(env);
-    } catch (e, stackTrace) {
-      logger.severe('Error: $e');
-      Sentry.captureException(e, stackTrace: stackTrace);
-    }
+    feeder.run(env);
     //debounced in case of resync
   }, const Duration(minutes: 1));
 
   HttpServer.bind(InternetAddress.anyIPv4, int.parse(env["PING_PORT"]!))
       .then((server) {
     server.listen((HttpRequest request) {
-      debouncedFunction();
+      try {
+        debouncedFunction();
+      } catch (e, stackTrace) {
+        logger.severe('Error: $e');
+        Sentry.captureException(e, stackTrace: stackTrace);
+      }
       request.response
         ..statusCode = HttpStatus.ok
         ..write('Server received request')
