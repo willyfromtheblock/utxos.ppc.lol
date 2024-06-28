@@ -53,7 +53,7 @@ void run(DotEnv env) async {
     for (final height in results) {
       //validate the height and value
       if (height['height'] == null || height['value'] == null) {
-        logger.severe(
+        logger.warning(
           'Invalid height or value, skipping $height',
         ); // values manually checked in surrealdb, no idea why they are RANDOMLY null.. they are stored correctly
         continue;
