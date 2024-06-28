@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:dotenv/dotenv.dart';
+import 'package:feeder/logger.dart';
 import 'package:feeder/tools.dart';
-import 'package:simple_logger/simple_logger.dart';
 import 'package:surrealdb/surrealdb.dart';
-
-final logger = SimpleLogger();
 
 void run(DotEnv env) async {
   //init surreal

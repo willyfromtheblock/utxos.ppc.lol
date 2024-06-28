@@ -1,5 +1,6 @@
 import 'package:feeder/feeder.dart' as feeder;
 import 'package:dotenv/dotenv.dart';
+import 'package:feeder/logger.dart';
 import 'dart:io';
 import 'package:rate_limiter/rate_limiter.dart';
 import 'package:sentry/sentry.dart';
@@ -34,6 +35,7 @@ Future<void> main() async {
     try {
       feeder.run(env);
     } catch (e, stackTrace) {
+      logger.severe('Error: $e');
       Sentry.captureException(e, stackTrace: stackTrace);
     }
     //debounced in case of resync
