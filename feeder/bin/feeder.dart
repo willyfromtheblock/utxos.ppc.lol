@@ -2,6 +2,7 @@ import 'package:feeder/feeder.dart' as feeder;
 import 'package:dotenv/dotenv.dart';
 import 'dart:io';
 import 'package:rate_limiter/rate_limiter.dart';
+import 'package:sentry/sentry.dart';
 
 const envList = [
   "PING_PORT",
@@ -15,16 +16,26 @@ const envList = [
   "S3_ACCESS_KEY",
   "S3_SECRET_KEY",
   "S3_BUCKET_NAME",
+  "SENTRY_DSN"
 ];
 
-void main() {
+Future<void> main() async {
   var env = DotEnv(includePlatformEnvironment: true)..load();
+
+  await Sentry.init((options) {
+    options.dsn = env["SENTRY_DSN"]!;
+    options.tracesSampleRate = 0;
+  });
 
   if (env.isEveryDefined(envList) == false) {
     throw Exception('Error: Environment variables not found or incomplete');
   }
   final debouncedFunction = debounce(() {
-    feeder.run(env);
+    try {
+      feeder.run(env);
+    } catch (e, stackTrace) {
+      Sentry.captureException(e, stackTrace: stackTrace);
+    }
     //debounced in case of resync
   }, const Duration(minutes: 1));
 

@@ -12,6 +12,7 @@ dependencies:
   rate_limiter: ^1.0.0
   simple_logger: ^1.9.0+3
   surrealdb: ^0.8.0
+  sentry: ^8.3.0
 
 dev_dependencies:
   lints: ^4.0.0
