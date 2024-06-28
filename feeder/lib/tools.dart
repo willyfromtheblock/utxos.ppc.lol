@@ -63,3 +63,9 @@ Future<void> uploadToS3({
     logger.info('$fileName: no changes detected');
   }
 }
+
+List serializeData(Map map) {
+  return map.entries
+      .map((entry) => {'height': entry.key, 'count': entry.value})
+      .toList();
+}

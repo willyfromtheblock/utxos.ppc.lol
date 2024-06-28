@@ -79,11 +79,6 @@ void run(DotEnv env) async {
             : numberOfUnspentUtxos[currentHeight]! + 1;
   });
 
-  //serialize the data for upload
-  final numberOfUnspentUtxosList = numberOfUnspentUtxos.entries
-      .map((entry) => {'height': entry.key, 'count': entry.value})
-      .toList();
-
   //parse utxo data into a map of height to count in 50k chunks
   Map<int, double> commulativeValueOfUtxos = {};
 
@@ -117,15 +112,14 @@ void run(DotEnv env) async {
     prevKey = slice.key;
   }
 
+  //serialize numberOfUnspentUtxosList for upload
+  final numberOfUnspentUtxosList = serializeData(numberOfUnspentUtxos);
+
   //serialize commulativeValueOfUtxosList for upload
-  final commulativeValueOfUtxosList = commulativeValueOfUtxos.entries
-      .map((entry) => {'height': entry.key, 'count': entry.value})
-      .toList();
+  final commulativeValueOfUtxosList = serializeData(commulativeValueOfUtxos);
 
   //serialize diffValueOfUtxos for upload
-  final diffValueOfUtxosList = diffValueOfUtxos.entries
-      .map((entry) => {'height': entry.key, 'count': entry.value})
-      .toList();
+  final diffValueOfUtxosList = serializeData(diffValueOfUtxos);
 
   //upload all the data to S3
   await uploadToS3(
