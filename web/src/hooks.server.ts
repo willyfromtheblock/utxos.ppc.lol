@@ -14,7 +14,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const [, lang] = getPathnameWithoutBase(event.url).split('/');
 
 	// redirect to base locale if no locale slug was found
-	if (!lang) {
+	if (!lang || !isLocale(lang)) {
 		const locale = getPreferredLocale(event);
 
 		throw redirect(307, `${base}/${locale}`);
@@ -27,10 +27,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// bind locale and translation functions to current request
 	event.locals.locale = locale;
 	event.locals.LL = LL;
-
-	const response = await resolve(event, {
-		filterSerializedResponseHeaders: (name) => name === 'last-modified'
-	});
 
 	// replace html lang attribute with correct language
 	return resolve(event, {
