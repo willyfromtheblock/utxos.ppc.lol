@@ -51,6 +51,11 @@ void run(DotEnv env) async {
     List<int> heightList = [];
     List<({int height, double value})> valueList = [];
     for (final height in results) {
+      //validate the height and value
+      if (height['height'] == null || height['value'] == null) {
+        throw Exception('Invalid height or value for $height');
+      }
+
       heightList.add(height['height'] as int);
       valueList.add((
         height: height['height'] as int,
