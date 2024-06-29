@@ -73,11 +73,12 @@ void run(DotEnv env) async {
     Map<int, int> numberOfUnspentUtxos = {};
 
     //start from the chain tip, move down 50k blocks, and read up
-    if (currentHeight>50000) {
-      for (int i = currentHeight-50000; i >= 0; i -= 50000) {
+    if (currentHeight > 50000) {
+      for (int i = currentHeight - 50000; i >= 0; i -= 50000) {
         heightList.where((element) => element >= i).forEach((element) {
-          numberOfUnspentUtxos[i] =
-              numberOfUnspentUtxos[i] == null ? 1 : numberOfUnspentUtxos[i]! + 1;
+          numberOfUnspentUtxos[i] = numberOfUnspentUtxos[i] == null
+              ? 1
+              : numberOfUnspentUtxos[i]! + 1;
         });
       }
     }
@@ -85,17 +86,15 @@ void run(DotEnv env) async {
     //also add total chain data point and store it at index 0
     heightList.where((element) => element <= 0).forEach((element) {
       numberOfUnspentUtxos[0] =
-          numberOfUnspentUtxos[0] == null
-              ? 1
-              : numberOfUnspentUtxos[0]! + 1;
+          numberOfUnspentUtxos[0] == null ? 1 : numberOfUnspentUtxos[0]! + 1;
     });
 
     //parse utxo data into a map of height to count in 50k chunks
     Map<int, double> commulativeValueOfUtxos = {};
 
     //start from the chain tip, move down 50k blocks, and read up
-    if (currentHeight>50000) {
-      for (int i = currentHeight-50000; i >= 0; i -= 50000) {
+    if (currentHeight > 50000) {
+      for (int i = currentHeight - 50000; i >= 0; i -= 50000) {
         valueList.where((element) => element.height >= i).forEach((element) {
           commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
               ? element.value
@@ -106,12 +105,25 @@ void run(DotEnv env) async {
 
     //also add total chain data point and store it at index 0
     valueList.where((element) => element.height >= 0).forEach((element) {
-      commulativeValueOfUtxos[0] =
-          commulativeValueOfUtxos[0] == null
-              ? element.value
-              : commulativeValueOfUtxos[0]! + element.value;
+      commulativeValueOfUtxos[0] = commulativeValueOfUtxos[0] == null
+          ? element.value
+          : commulativeValueOfUtxos[0]! + element.value;
     });
 
+    //Differential values are the age in blocks. Index backwards from currentHeight.
+    Map<int, int> diffNumberOfUtxos = {};
+    int? prevKeyDiff;
+    for (final slice in numberOfUnspentUtxos.entries) {
+      if (prevKeyDiff != null) {
+        diffNumberOfUtxos[currentHeight - slice.key] =
+            slice.value - numberOfUnspentUtxos[prevKeyDiff]!;
+      } else {
+        diffNumberOfUtxos[currentHeight - slice.key] = slice.value;
+      }
+      prevKeyDiff = slice.key;
+    }
+
+    //Differential values are the age in blocks. Index backwards from currentHeight.
     Map<int, double> diffValueOfUtxos = {};
     int? prevKey;
     for (final slice in commulativeValueOfUtxos.entries) {
@@ -131,6 +143,9 @@ void run(DotEnv env) async {
     final commulativeValueOfUtxosList = serializeData(commulativeValueOfUtxos);
 
     //serialize diffValueOfUtxos for upload
+    final diffNumberOfUtxosList = serializeData(diffNumberOfUtxos);
+
+    //serialize diffValueOfUtxos for upload
     final diffValueOfUtxosList = serializeData(diffValueOfUtxos);
 
     //upload all the data to S3
@@ -143,6 +158,11 @@ void run(DotEnv env) async {
       data: jsonEncode(commulativeValueOfUtxosList),
       env: env,
       fileName: 'valuesOfUtxos.json',
+    );
+    await uploadToS3(
+      data: jsonEncode(diffNumberOfUtxosList),
+      env: env,
+      fileName: 'diffValueOfUtxos.json',
     );
     await uploadToS3(
       data: jsonEncode(diffValueOfUtxosList),
