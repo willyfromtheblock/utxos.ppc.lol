@@ -91,7 +91,7 @@ type RootTranslation = {
 			 */
 			yAxis: string
 			/**
-			 * T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​o​f​ ​U​T​X​O​ ​v​a​l​u​e​ ​g​r​o​u​p​e​d​ ​b​y​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​c​o​m​p​a​r​e​d​ ​t​o​ ​t​h​e​ ​p​r​e​v​i​o​u​s​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​w​e​r​e​ ​l​a​s​t​ ​i​n​v​o​l​v​e​d​ ​i​n​ ​a​ ​t​r​a​n​s​a​c​t​i​o​n​ ​b​e​t​w​e​e​n​ ​x​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​t​i​m​e​ ​s​l​i​c​e​s​.
+			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
 			 */
 			description: string
 			/**
@@ -109,7 +109,7 @@ type RootTranslation = {
 			 */
 			yAxis: string
 			/**
-			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
+			 * T​h​e​ ​n​u​m​b​e​r​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​U​T​X​O​s​ ​w​e​r​e​ ​m​o​s​t​ ​r​e​c​e​n​t​l​y​ ​i​n​v​o​l​v​e​d​ ​i​n​ ​a​ ​t​r​a​n​s​a​c​t​i​o​n​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
 			 */
 			description: string
 			/**
@@ -208,7 +208,7 @@ export type TranslationFunctions = {
 			 */
 			yAxis: () => LocalizedString
 			/**
-			 * The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC were last involved in a transaction between x block height time slices.
+			 * The cumulative value of UTXOs in a block height slice. You may read this as y PPC are unspent since x number of blocks ago.
 			 */
 			description: () => LocalizedString
 			/**
@@ -226,7 +226,7 @@ export type TranslationFunctions = {
 			 */
 			yAxis: () => LocalizedString
 			/**
-			 * The cumulative value of UTXOs in a block height slice. You may read this as y PPC are unspent since x number of blocks ago.
+			 * The number of UTXOs in a block height slice. You may read this as y UTXOs were most recently involved in a transaction x number of blocks ago.
 			 */
 			description: () => LocalizedString
 			/**

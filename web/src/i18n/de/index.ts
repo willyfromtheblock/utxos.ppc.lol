@@ -29,14 +29,14 @@ const de: Translation = {
 			title: 'Alter der Münzen',
 			yAxis: 'Wert der UTXOs',
 			description:
-				'Der Unterschied des UTXO-Wertes gruppiert nach Blockhöhe im Vergleich zur vorherigen Scheibe. Sie können dies so lesen, dass y PPC zuletzt in einer Transaktion zwischen den Zeitscheiben der Blockhöhe x beteiligt waren.',
+				'Der kumulative Wert der UTXOs in einem Blockhöhenbereich. Sie können dies so lesen, dass y PPC seit x Blöcken unverbraucht sind.',
 			value: 'Wert'
 		},
 		diffNumberOfUtxos: {
 			title: 'Alter der Transaktionen',
 			yAxis: 'Anzahl der UTXOs',
 			description:
-				'Der kumulative Wert der UTXOs in einem Blockhöhenbereich. Sie können dies so lesen, dass y PPC seit x Blöcken unverbraucht sind.',
+				'Die Anzahl der UTXOs in einem Blockhöhenbereich. Sie können dies so lesen, dass y UTXOs vor x Blöcken zuletzt in einer Transaktion verwendet wurden.',
 			value: 'Wert'
 		}
 	},
