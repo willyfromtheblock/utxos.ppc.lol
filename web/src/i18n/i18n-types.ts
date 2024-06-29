@@ -113,7 +113,7 @@ type RootTranslation = {
 			 */
 			description: string
 			/**
-			 * V​a​l​u​e
+			 * n
 			 */
 			value: string
 		}
@@ -230,7 +230,7 @@ export type TranslationFunctions = {
 			 */
 			description: () => LocalizedString
 			/**
-			 * Value
+			 * n
 			 */
 			value: () => LocalizedString
 		}

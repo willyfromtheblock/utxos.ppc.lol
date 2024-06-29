@@ -37,7 +37,7 @@ const de: Translation = {
 			yAxis: 'Anzahl der UTXOs',
 			description:
 				'Die Anzahl der UTXOs in einem Blockhöhenbereich. Sie können dies so lesen, dass y UTXOs vor x Blöcken zuletzt in einer Transaktion verwendet wurden.',
-			value: 'Wert'
+			value: 'n'
 		}
 	},
 	footer: {

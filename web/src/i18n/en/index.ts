@@ -37,7 +37,7 @@ const en = {
 			yAxis: 'Number of UTXOs',
 			description:
 				'The number of UTXOs in a block height slice. You may read this as y UTXOs were most recently involved in a transaction x number of blocks ago.',
-			value: 'Value'
+			value: 'n'
 		}
 	},
 	footer: {
