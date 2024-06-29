@@ -162,7 +162,7 @@ void run(DotEnv env) async {
     await uploadToS3(
       data: jsonEncode(diffNumberOfUtxosList),
       env: env,
-      fileName: 'diffValueOfUtxos.json',
+      fileName: 'diffNumberOfUtxos.json',
     );
     await uploadToS3(
       data: jsonEncode(diffValueOfUtxosList),
