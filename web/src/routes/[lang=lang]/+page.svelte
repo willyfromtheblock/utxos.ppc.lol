@@ -40,6 +40,18 @@
 	<p>
 		{$LL.charts.diffValueOfUtxos.description()}
 	</p>
+	<hr />
+	<Chart
+		chartTitle={$LL.charts.diffNumberOfUtxos.title()}
+		chartId="diffNumberOfUtxos"
+		chartData={data.diffNumberOfUtxos}
+		xAxisTitle={$LL.charts.common.ageInBlocks()}
+		yAxisTitle={$LL.charts.diffNumberOfUtxos.yAxis()}
+		valueName={$LL.charts.diffNumberOfUtxos.value()}
+	/>
+	<p>
+		{$LL.charts.diffNumberOfUtxos.description()}
+	</p>
 </div>
 <div class="last-modified">
 	{$LL.lastModified()}{data.lastModified}

@@ -34,7 +34,7 @@
 						'font-size': '0.8rem'
 					}
 				},
-				reversed: chartId === 'diffValueOfUtxos' ? true : false
+				reversed: chartId.includes('diff') ? true : false
 			},
 			yAxis: {
 				title: {

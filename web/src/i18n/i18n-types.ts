@@ -99,6 +99,24 @@ type RootTranslation = {
 			 */
 			value: string
 		}
+		diffNumberOfUtxos: {
+			/**
+			 * A​g​e​ ​o​f​ ​T​r​a​n​s​a​c​t​i​o​n​s
+			 */
+			title: string
+			/**
+			 * N​u​m​b​e​r​ ​o​f​ ​U​T​X​O​s
+			 */
+			yAxis: string
+			/**
+			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
+			 */
+			description: string
+			/**
+			 * V​a​l​u​e
+			 */
+			value: string
+		}
 	}
 	footer: {
 		/**
@@ -191,6 +209,24 @@ export type TranslationFunctions = {
 			yAxis: () => LocalizedString
 			/**
 			 * The difference of UTXO value grouped by block height compared to the previous slice. You may read this as y PPC were last involved in a transaction between x block height time slices.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Value
+			 */
+			value: () => LocalizedString
+		}
+		diffNumberOfUtxos: {
+			/**
+			 * Age of Transactions
+			 */
+			title: () => LocalizedString
+			/**
+			 * Number of UTXOs
+			 */
+			yAxis: () => LocalizedString
+			/**
+			 * The cumulative value of UTXOs in a block height slice. You may read this as y PPC are unspent since x number of blocks ago.
 			 */
 			description: () => LocalizedString
 			/**

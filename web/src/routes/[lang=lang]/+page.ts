@@ -5,6 +5,7 @@ export async function load({ fetch }): Promise<
 			nOfUtxos: ChartData[];
 			valuesOfUtxos: ChartData[];
 			diffValueOfUtxos: ChartData[];
+			diffNumberOfUtxos: ChartData[];
 			lastModified: string;
 	  }
 	| {}
@@ -30,10 +31,20 @@ export async function load({ fetch }): Promise<
 			item.count
 		]);
 
+		const diffNumberOfUtxosResponse = await fetch(
+			'https://utxos-bucket.ppc.lol/diffNumberOfUtxos.json'
+		);
+		const diffNumberOfUtxosData = await diffNumberOfUtxosResponse.json();
+		const diffNumberOfUtxosTransformedData = diffNumberOfUtxosData.map((item: any) => [
+			item.height,
+			item.count
+		]);
+
 		return {
 			nOfUtxos: nOfUtxosDataTransformedData,
 			valuesOfUtxos: valuesOfUtxosTransformedData,
 			diffValueOfUtxos: diffValueOfUtxosTransformedData,
+			diffNumberOfUtxos: diffNumberOfUtxosTransformedData,
 			lastModified: nOfUtxosResponse.headers.get('last-modified')
 		};
 	} catch (error) {

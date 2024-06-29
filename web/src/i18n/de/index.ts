@@ -31,6 +31,13 @@ const de: Translation = {
 			description:
 				'Der Unterschied des UTXO-Wertes gruppiert nach Blockhöhe im Vergleich zur vorherigen Scheibe. Sie können dies so lesen, dass y PPC zuletzt in einer Transaktion zwischen den Zeitscheiben der Blockhöhe x beteiligt waren.',
 			value: 'Wert'
+		},
+		diffNumberOfUtxos: {
+			title: 'Alter der Transaktionen',
+			yAxis: 'Anzahl der UTXOs',
+			description:
+				'Der kumulative Wert der UTXOs in einem Blockhöhenbereich. Sie können dies so lesen, dass y PPC seit x Blöcken unverbraucht sind.',
+			value: 'Wert'
 		}
 	},
 	footer: {
