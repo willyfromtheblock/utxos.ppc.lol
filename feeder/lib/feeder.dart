@@ -55,7 +55,7 @@ void run(DotEnv env) async {
       if (height['height'] == null || height['value'] == null) {
         logger.warning(
           'Invalid height or value, skipping $height',
-        ); // values manually checked in surrealdb, no idea why they are RANDOMLY null.. they are stored correctly
+        ); // values manually checked in surrealdb, no idea why they are RANDOMLY null.. they are stored correctly.
         continue;
       }
 
@@ -72,40 +72,44 @@ void run(DotEnv env) async {
     //parse utxo data into a map of height to count in 50k chunks
     Map<int, int> numberOfUnspentUtxos = {};
 
-    for (int i = 0; i <= currentHeight; i += 50000) {
-      heightList.where((element) => element <= i).forEach((element) {
-        numberOfUnspentUtxos[i] =
-            numberOfUnspentUtxos[i] == null ? 1 : numberOfUnspentUtxos[i]! + 1;
-      });
+    //start from the chain tip, move down 50k blocks, and read up
+    if (currentHeight>50000) {
+      for (int i = currentHeight-50000; i >= 0; i -= 50000) {
+        heightList.where((element) => element >= i).forEach((element) {
+          numberOfUnspentUtxos[i] =
+              numberOfUnspentUtxos[i] == null ? 1 : numberOfUnspentUtxos[i]! + 1;
+        });
+      }
     }
 
-    //also add currentHeight data point
-    heightList.where((element) => element <= currentHeight).forEach((element) {
-      numberOfUnspentUtxos[currentHeight] =
-          numberOfUnspentUtxos[currentHeight] == null
+    //also add total chain data point and store it at index 0
+    heightList.where((element) => element <= 0).forEach((element) {
+      numberOfUnspentUtxos[0] =
+          numberOfUnspentUtxos[0] == null
               ? 1
-              : numberOfUnspentUtxos[currentHeight]! + 1;
+              : numberOfUnspentUtxos[0]! + 1;
     });
 
     //parse utxo data into a map of height to count in 50k chunks
     Map<int, double> commulativeValueOfUtxos = {};
 
-    for (int i = 0; i <= currentHeight; i += 50000) {
-      valueList.where((element) => element.height <= i).forEach((element) {
-        commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
-            ? element.value
-            : commulativeValueOfUtxos[i]! + element.value;
-      });
+    //start from the chain tip, move down 50k blocks, and read up
+    if (currentHeight>50000) {
+      for (int i = currentHeight-50000; i >= 0; i -= 50000) {
+        valueList.where((element) => element.height >= i).forEach((element) {
+          commulativeValueOfUtxos[i] = commulativeValueOfUtxos[i] == null
+              ? element.value
+              : commulativeValueOfUtxos[i]! + element.value;
+        });
+      }
     }
 
-    //also add currentHeight data point
-    valueList
-        .where((element) => element.height <= currentHeight)
-        .forEach((element) {
-      commulativeValueOfUtxos[currentHeight] =
-          commulativeValueOfUtxos[currentHeight] == null
+    //also add total chain data point and store it at index 0
+    valueList.where((element) => element.height >= 0).forEach((element) {
+      commulativeValueOfUtxos[0] =
+          commulativeValueOfUtxos[0] == null
               ? element.value
-              : commulativeValueOfUtxos[currentHeight]! + element.value;
+              : commulativeValueOfUtxos[0]! + element.value;
     });
 
     Map<int, double> diffValueOfUtxos = {};
