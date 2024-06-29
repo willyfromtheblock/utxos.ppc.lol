@@ -33,7 +33,7 @@
 		chartTitle={$LL.charts.diffValueOfUtxos.title()}
 		chartId="diffValueOfUtxos"
 		chartData={data.diffValueOfUtxos}
-		xAxisTitle={$LL.charts.common.blockHeight()}
+		xAxisTitle={$LL.charts.common.ageInBlocks()}
 		yAxisTitle={$LL.charts.diffValueOfUtxos.yAxis()}
 		valueName={$LL.charts.diffValueOfUtxos.value()}
 	/>

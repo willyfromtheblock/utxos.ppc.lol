@@ -8,7 +8,8 @@ const de: Translation = {
 	lastModified: 'Zuletzt geändert: ',
 	charts: {
 		common: {
-			blockHeight: 'Blockhöhe'
+			blockHeight: 'Blockhöhe',
+			ageInBlocks: 'Alter in Blöcken'
 		},
 		nOfUtxos: {
 			title: 'Kumulative Anzahl UTXOs',

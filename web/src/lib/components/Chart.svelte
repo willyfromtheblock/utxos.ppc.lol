@@ -34,7 +34,7 @@
 						'font-size': '0.8rem'
 					}
 				},
-				reversed: false
+				reversed: chartId === 'diffValueOfUtxos' ? true : false
 			},
 			yAxis: {
 				title: {
@@ -47,6 +47,9 @@
 				minorTickInterval: 'auto'
 			},
 			plotOptions: {
+				bar: {
+					pointWidth: 2
+				},
 				series: {
 					turboThreshold: 5000,
 					dataGrouping: {

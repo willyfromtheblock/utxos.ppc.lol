@@ -8,7 +8,8 @@ const en = {
 	lastModified: 'Last modified: ',
 	charts: {
 		common: {
-			blockHeight: 'Block Height'
+			blockHeight: 'Block Height',
+			ageInBlocks: 'Age in Blocks'
 		},
 		nOfUtxos: {
 			title: 'Cumulative Number UTXOs',
