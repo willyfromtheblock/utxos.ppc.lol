@@ -16,6 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install dependencies
+        working-directory: feeder
         run: dart pub get
       - name: Analyze Dart
-        uses: zgosalvez/github-actions-analyze-dart@v1
+        working-directory: feeder
+        run: dart analyze
