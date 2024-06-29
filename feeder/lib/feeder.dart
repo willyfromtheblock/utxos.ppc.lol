@@ -116,10 +116,10 @@ void run(DotEnv env) async {
     int? prevKey;
     for (final slice in commulativeValueOfUtxos.entries) {
       if (prevKey != null) {
-        diffValueOfUtxos[slice.key] =
+        diffValueOfUtxos[currentHeight - slice.key] =
             slice.value - commulativeValueOfUtxos[prevKey]!;
       } else {
-        diffValueOfUtxos[slice.key] = slice.value;
+        diffValueOfUtxos[currentHeight - slice.key] = slice.value;
       }
       prevKey = slice.key;
     }
