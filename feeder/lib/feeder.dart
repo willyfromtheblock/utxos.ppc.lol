@@ -112,6 +112,20 @@ void run(DotEnv env) async {
               : commulativeValueOfUtxos[0]! + element.value;
     });
 
+    //Differential values are the age in blocks. Index backwards from currentHeight.
+    Map<int, double> diffNumberOfUtxos = {};
+    int? prevKey;
+    for (final slice in numberOfUnspentUtxos.entries) {
+      if (prevKey != null) {
+        diffNumberOfUtxos[currentHeight - slice.key] =
+            slice.value - numberOfUnspentUtxos[prevKey]!;
+      } else {
+        diffNumberOfUtxos[currentHeight - slice.key] = slice.value;
+      }
+      prevKey = slice.key;
+    }
+    
+    //Differential values are the age in blocks. Index backwards from currentHeight.
     Map<int, double> diffValueOfUtxos = {};
     int? prevKey;
     for (final slice in commulativeValueOfUtxos.entries) {
@@ -131,6 +145,9 @@ void run(DotEnv env) async {
     final commulativeValueOfUtxosList = serializeData(commulativeValueOfUtxos);
 
     //serialize diffValueOfUtxos for upload
+    final diffNumberOfUtxosList = serializeData(diffNumberOfUtxos);
+
+    //serialize diffValueOfUtxos for upload
     final diffValueOfUtxosList = serializeData(diffValueOfUtxos);
 
     //upload all the data to S3
@@ -143,6 +160,11 @@ void run(DotEnv env) async {
       data: jsonEncode(commulativeValueOfUtxosList),
       env: env,
       fileName: 'valuesOfUtxos.json',
+    );
+    await uploadToS3(
+      data: jsonEncode(diffNumberOfUtxosList),
+      env: env,
+      fileName: 'diffValueOfUtxos.json',
     );
     await uploadToS3(
       data: jsonEncode(diffValueOfUtxosList),
