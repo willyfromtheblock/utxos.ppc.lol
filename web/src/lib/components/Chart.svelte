@@ -48,7 +48,7 @@
 			},
 			plotOptions: {
 				bar: {
-					pointWidth: 4
+					pointWidth: 8
 				},
 				series: {
 					turboThreshold: 5000,
