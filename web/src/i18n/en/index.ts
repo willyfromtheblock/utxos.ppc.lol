@@ -29,7 +29,7 @@ const en = {
 			title: 'Age of Coins',
 			yAxis: 'Value of UTXOs',
 			description:
-				'The cumulative value of UTXOs in a block height slice. You may read this as y PPC are unspent since x number of blocks ago.',
+				'The cumulative value of UTXOs in a block height slice. You may read this as y PPC were last spent x number of blocks ago.',
 			value: 'Value'
 		},
 		diffNumberOfUtxos: {
