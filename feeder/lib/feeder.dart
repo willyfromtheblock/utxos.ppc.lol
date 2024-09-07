@@ -43,7 +43,7 @@ void run(DotEnv env) async {
 
     //get utxo data (block:-2 means unspent, value > 0 filters out unspendable utxos)
     final dbRes = await surrealClient.query(
-            r"SELECT block.height AS height, value FROM (SELECT block,value FROM utxo WHERE spent_on_block = 'block:-2' AND value > 0) FETCH block")
+            r"SELECT block.height AS height, value FROM (SELECT block,value FROM utxo WHERE spent_on_block = <record> 'block:-2' AND value > 0) FETCH block")
         as List<dynamic>;
     final results = dbRes[0]["result"];
 
