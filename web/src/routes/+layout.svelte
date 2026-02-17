@@ -114,7 +114,7 @@
 	}
 	.coinerella {
 		margin-top: 1rem;
-		height: 50px;
+		height: 25px;
 		filter: invert(1);
 	}
 </style>
