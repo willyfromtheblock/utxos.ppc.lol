@@ -29,6 +29,13 @@
 			>{$LL.footer.website()}
 		</a>
 		<span class="donations">Donations: PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9</span>
+		<a href="https://www.coinerella.com" target="_blank" rel="noopener noreferrer">
+			<img
+				src="https://fonts.peercoinexplorer.net/coinerella.png"
+				alt="Coinerella"
+				class="coinerella"
+			/>
+		</a>
 	</div>
 </footer>
 
@@ -100,8 +107,14 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
+		align-items: center;
 	}
 	footer > div > a {
 		color: var(--peercoin-green);
+	}
+	.coinerella {
+		margin-top: 1rem;
+		height: 50px;
+		filter: invert(1);
 	}
 </style>
