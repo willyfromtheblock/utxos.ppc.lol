@@ -91,7 +91,7 @@ type RootTranslation = {
 			 */
 			yAxis: string
 			/**
-			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​a​r​e​ ​u​n​s​p​e​n​t​ ​s​i​n​c​e​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
+			 * T​h​e​ ​c​u​m​u​l​a​t​i​v​e​ ​v​a​l​u​e​ ​o​f​ ​U​T​X​O​s​ ​i​n​ ​a​ ​b​l​o​c​k​ ​h​e​i​g​h​t​ ​s​l​i​c​e​.​ ​Y​o​u​ ​m​a​y​ ​r​e​a​d​ ​t​h​i​s​ ​a​s​ ​y​ ​P​P​C​ ​w​e​r​e​ ​l​a​s​t​ ​s​p​e​n​t​ ​x​ ​n​u​m​b​e​r​ ​o​f​ ​b​l​o​c​k​s​ ​a​g​o​.
 			 */
 			description: string
 			/**
@@ -208,7 +208,7 @@ export type TranslationFunctions = {
 			 */
 			yAxis: () => LocalizedString
 			/**
-			 * The cumulative value of UTXOs in a block height slice. You may read this as y PPC are unspent since x number of blocks ago.
+			 * The cumulative value of UTXOs in a block height slice. You may read this as y PPC were last spent x number of blocks ago.
 			 */
 			description: () => LocalizedString
 			/**
